@@ -16,5 +16,7 @@ router.post(
   v.checkIsEmpty(['username', 'password']),
   adminController.login
 )
+// 用户登出
+router.get('/logout',adminController.logout)
 
 module.exports = router
