@@ -29,5 +29,11 @@ router.post(
   v.checkIsEmpty(['name', 'slug']),
   adminController.category_add
 )
+router.post(
+  '/category_edit',
+  v.checkIsUndefined(['id','name', 'slug']),
+  v.checkIsEmpty(['id','name', 'slug']),
+  adminController.category_edit
+)
 
 module.exports = router

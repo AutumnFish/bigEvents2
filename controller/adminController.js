@@ -67,7 +67,12 @@ module.exports = {
   // 获取分类
   async category_search(req, res) {
     // res.send('/category_search')
-    let data = await Category.findAll()
+    let data = await Category.findAll({
+      where: {
+        isDelete: false
+      },
+      attributes: ['id', 'name', 'slug']
+    })
     res.send({
       msg: '获取成功',
       code: 200,
@@ -94,5 +99,39 @@ module.exports = {
         msg: 'name,slug不能重复哦'
       })
     }
+  },
+  // 编辑分类
+  async category_edit(req, res) {
+    // 获取数据
+    const { id, slug, name } = req.body
+
+    // 判断id 是否正确
+    const categoryData = await Category.findAll({
+      where: {
+        id
+      }
+    })
+    if (categoryData.length == 0) {
+      return res.send({
+        msg: 'id是不是给错了哦',
+        code: 400
+      })
+    }
+    // 修改数据
+    let result= await Category.update(
+      {
+        slug,
+        name
+      },
+      {
+        where: {
+          id
+        }
+      }
+    )
+    res.send({
+      code:202,
+      msg:'修改成功'
+    })
   }
 }
