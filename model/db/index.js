@@ -15,7 +15,7 @@ const sequelize = new Sequelize(database,username,password,{
 const User = UserModel(sequelize, Sequelize);
 const Category = CategoryModel(sequelize, Sequelize);
 
-User.associate(Category)
+
 
 
 module.exports = {

@@ -17,8 +17,17 @@ router.post(
   adminController.login
 )
 // 用户登出
-router.get('/logout',adminController.logout)
+router.get('/logout', adminController.logout)
 // 获取用户信息
-router.get('/getuser',adminController.getuser)
+router.get('/getuser', adminController.getuser)
+// 获取分类
+router.get('/category_search', adminController.category_search)
+// 新增分类
+router.post(
+  '/category_add',
+  v.checkIsUndefined(['name', 'slug']),
+  v.checkIsEmpty(['name', 'slug']),
+  adminController.category_add
+)
 
 module.exports = router

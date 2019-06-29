@@ -22,8 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/admin', adminRouter)
 
 // 监听
-// sequelize.sync({force:true}).then(() => {
-sequelize.sync().then(() => {
+sequelize.sync({force:true}).then(() => {
+// sequelize.sync().then(() => {
   app.listen(8000, () => {
     console.log('succss')
   })

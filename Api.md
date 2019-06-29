@@ -563,10 +563,9 @@
 | :--: | :----: | ------------------------------ |
 | msg  | string | 文字信息 ‘删除成功’ ‘删除失败’ |
 
-#### 13、文章类别搜索(未完成)
+#### 13、文章类别搜索
 
-请求地址：http://localhost:8000/admin/category_search
-网络地址: https://autumnfish.cn/big/admin/category_search
+请求地址：admin/category_search
 
 请求方式：get
 
@@ -582,8 +581,7 @@
 
 #### 14、新增文章类别(未完成)
 
-请求地址：http://localhost:8000/admin/category_add
-网络地址: https://autumnfish.cn/big/admin/category_add
+请求地址：/admin/category_add
 
 请求方式：post
 
