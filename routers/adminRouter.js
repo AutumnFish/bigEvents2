@@ -29,11 +29,18 @@ router.post(
   v.checkIsEmpty(['name', 'slug']),
   adminController.category_add
 )
+// 编辑分类
 router.post(
   '/category_edit',
-  v.checkIsUndefined(['id','name', 'slug']),
-  v.checkIsEmpty(['id','name', 'slug']),
+  v.checkIsUndefined(['id', 'name', 'slug']),
+  v.checkIsEmpty(['id', 'name', 'slug']),
   adminController.category_edit
 )
 
+router.post(
+  '/category_delete',
+  v.checkIsUndefined(['id']),
+  v.checkIsEmpty(['id']),
+  adminController.category_delete
+)
 module.exports = router

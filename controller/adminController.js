@@ -1,7 +1,8 @@
 // 导入路径模块
 const path = require('path')
 // 导入模型
-const { User, Category } = require('../model/db/index')
+const { User, Category, Sequelize } = require('../model/db/index')
+const { or, and, gt, lt } = Sequelize.Op
 
 module.exports = {
   // 登录
@@ -67,12 +68,7 @@ module.exports = {
   // 获取分类
   async category_search(req, res) {
     // res.send('/category_search')
-    let data = await Category.findAll({
-      where: {
-        isDelete: false
-      },
-      attributes: ['id', 'name', 'slug']
-    })
+    let data = await Category.findAll()
     res.send({
       msg: '获取成功',
       code: 200,
@@ -82,7 +78,7 @@ module.exports = {
   // 新增分类
   async category_add(req, res) {
     // 接收参数
-    const { name, slug } = req.body
+    let { name, slug } = req.body
     // 判断是否存在
     try {
       await Category.create({
@@ -118,7 +114,7 @@ module.exports = {
       })
     }
     // 修改数据
-    let result= await Category.update(
+    let result = await Category.update(
       {
         slug,
         name
@@ -130,8 +126,35 @@ module.exports = {
       }
     )
     res.send({
-      code:202,
-      msg:'修改成功'
+      code: 202,
+      msg: '修改成功'
+    })
+  },
+  // 删除分类(软删除)
+  async category_delete(req, res) {
+    // 接收id
+    const { id } = req.body
+    // 判断id 是否正确
+    const categoryData = await Category.findAll({
+      where: {
+        id
+      }
+    })
+    if (categoryData.length == 0) {
+      return res.send({
+        msg: 'id是不是给错了哦',
+        code: 400
+      })
+    }
+    // 修改数据 (软删除)
+    await Category.destroy({
+      where: {
+        id
+      }
+    })
+    res.send({
+      code: 203,
+      msg: '删除成功'
     })
   }
 }

@@ -579,7 +579,7 @@
 | name | string | 类别名称 |
 | slug | string | 别名     |
 
-#### 14、新增文章类别(未完成)
+#### 14、新增文章类别
 
 请求地址：/admin/category_add
 
@@ -598,10 +598,9 @@
 | :--: | :----: | ------------------------------ |
 | msg  | string | 文字信息 ‘增加成功’ ‘增加失败’ |
 
-#### 15、编辑文章类别(未完成)
+#### 15、编辑文章类别
 
-请求地址：http://localhost:8000/admin/category_edit
-网络地址: https://autumnfish.cn/big/admin/category_edit
+请求地址：/admin/category_edit
 
 请求方式：post
 
@@ -619,10 +618,9 @@
 | :--: | :----: | ------------------------------ |
 | msg  | string | 文字信息 ‘编辑成功’ ‘编辑失败’ |
 
-#### 16、删除文章类别(未完成)
+#### 16、删除文章类别
 
-请求地址：http://localhost:8000/admin/category_delete
-网络地址: https://autumnfish.cn/big/admin/category_delete
+请求地址：/admin/category_delete
 
 请求方式：post
 
