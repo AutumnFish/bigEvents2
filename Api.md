@@ -260,21 +260,23 @@
 
 #### 
 
-#### 3、获取用户信息(未完成)
+#### 3、获取用户信息
 
-请求地址：http://localhost:8000/admin/getuser
-网络地址: https://autumnfish.cn/big/admin/getuser
+请求地址：admin/getuser
 
 请求方式：get
 
-请求参数：
+请求参数：无
 
 返回数据：
 
 |   名称   |  类型  | 说明         |
 | :------: | :----: | ------------ |
+| username | string | 用户名称     |
 | nickname | string | 用户昵称     |
+|  email   | string | 用户邮箱     |
 | user_pic | string | 用户图片地址 |
+| password | string | 用户密码     |
 
 #### 4、文章数量统计(未完成)
 
