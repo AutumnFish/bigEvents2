@@ -9,7 +9,7 @@ const path = require('path')
 // 导入路由中间件
 const adminRouter = require(path.join(__dirname, './routers/adminRouter'))
 // 导入模型
-const { sequelize } = require(path.join(__dirname, './model/db.js'))
+const { sequelize } = require(path.join(__dirname, './model/db/index'))
 
 // 服务器对象
 const app = express()
@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/admin', adminRouter)
 
 // 监听
+// sequelize.sync({force:true}).then(() => {
 sequelize.sync().then(() => {
   app.listen(8000, () => {
     console.log('succss')
